@@ -109,7 +109,7 @@ public class MapBuilder<K, V> {
      * @throws ClassCastException If natural ordering is requested and the keys do not implement {@link Comparable}.
      */
     public Map<K, V> build() {
-        return Collections.unmodifiableMap(switch (order) {
+        var map = switch (order) {
             case NONE -> new HashMap<>(entries);
             case NATURAL -> new TreeMap<>(entries);
             case COMPARATOR -> {
@@ -118,6 +118,8 @@ public class MapBuilder<K, V> {
                 yield m;
             }
             case INSERTION -> new LinkedHashMap<>(entries);
-        });
+        };
+
+        return Collections.unmodifiableMap(map);
     }
 }
