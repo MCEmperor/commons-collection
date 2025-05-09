@@ -56,6 +56,11 @@ public class MapBuilder<K, V> {
     private final Map<K, V> entries = new LinkedHashMap<>();
 
     /**
+     * Constructs a new MapBuilder instance.
+     */
+    public MapBuilder() { }
+
+    /**
      * Adds a key-value pair to the map being built. If the key already exists, the value is overwritten.
      *
      * @param key The key to add.
