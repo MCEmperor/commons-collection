@@ -7,6 +7,8 @@
     <groupId>org.mcemperor.util</groupId>
     <artifactId>commons-collection</artifactId>
     <version>0.1.0-SNAPSHOT</version>
+    <url>https://github.com/${repository.id}</url>
+    <description>Utilities for collections.</description>
     <packaging>jar</packaging>
 
     <licenses>
