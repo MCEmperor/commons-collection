@@ -26,7 +26,7 @@ public class MapBuilder<K, V> {
     private Comparator<K> comparator;
 
     /**
-     * The map used to store the entries as they are added. Maintains insertion order.
+     * The map used to store the entries as they are added.
      */
     private Map<K, V> entries;
 
