@@ -16,31 +16,6 @@ import java.util.TreeMap;
 public class MapBuilder<K, V> {
 
     /**
-     * Enumeration defining the possible ordering of the map entries.
-     */
-    private enum Order {
-        /**
-         * No specific ordering is applied; the order is determined by the underlying {@link HashMap}.
-         */
-        NONE,
-
-        /**
-         * Entries are ordered based on the natural ordering of the keys. The keys must implement {@link Comparable}.
-         */
-        NATURAL,
-
-        /**
-         * Entries are ordered based on a provided {@link Comparator} for the keys.
-         */
-        COMPARATOR,
-
-        /**
-         * Entries are ordered based on the order in which they were inserted into the builder.
-         */
-        INSERTION
-    }
-
-    /**
      * The desired ordering for the map. Defaults to {@link Order#INSERTION}.
      */
     private Order order = Order.INSERTION;
