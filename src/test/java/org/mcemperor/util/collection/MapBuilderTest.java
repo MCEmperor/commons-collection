@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Comparator;
 import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.entry;
 
 class MapBuilderTest {
@@ -15,6 +17,24 @@ class MapBuilderTest {
             .build();
 
         assertThat(map).containsEntry("one", 1);
+    }
+
+    @Test
+    void unordered_setsUnordered() {
+        Map<String, Integer> map = new MapBuilder<String, Integer>()
+            .unordered()
+            .put("three", 3)
+            .put("one", 1)
+            .put("two", 2)
+            .put("four", 4)
+            .build();
+
+        assertThat(map).containsOnly(
+            entry("three", 3),
+            entry("one", 1),
+            entry("two", 2),
+            entry("four", 4)
+        );
     }
 
     @Test
@@ -68,6 +88,24 @@ class MapBuilderTest {
     }
 
     @Test
+    void insertionOrder_throwsIfInsertionOrderWasDiscarded() {
+        assertThatExceptionOfType(IllegalStateException.class)
+            .isThrownBy(() -> new MapBuilder<String, Integer>()
+                .unordered()
+                .put("one", 1)
+                .put("two", 2)
+                .insertionOrder());
+    }
+
+    @Test
+    void insertionOrder_doesNotThrowIfInternalMapIsStillEmpty() {
+        assertThatNoException()
+            .isThrownBy(() -> new MapBuilder<String, Integer>()
+                .unordered()
+                .insertionOrder());
+    }
+
+    @Test
     void build_returnsUnmodifiableMap_noOrder() {
         Map<String, Integer> map = new MapBuilder<String, Integer>()
             .put("one", 1)
@@ -76,10 +114,10 @@ class MapBuilderTest {
 
         assertThat(map)
             .isUnmodifiable()
-            .containsExactlyInAnyOrderEntriesOf(Map.of(
-                "one", 1,
-                "two", 2
-            ));
+            .containsOnly(
+                entry("one", 1),
+                entry("two", 2)
+            );
     }
 
     @Test
@@ -136,4 +174,3 @@ class MapBuilderTest {
             );
     }
 }
-

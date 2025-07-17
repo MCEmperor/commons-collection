@@ -41,9 +41,9 @@ public class MapBuilder<K, V> {
     }
 
     /**
-     * The desired ordering for the map. Defaults to {@link Order#NONE}.
+     * The desired ordering for the map. Defaults to {@link Order#INSERTION}.
      */
-    private Order order = Order.NONE;
+    private Order order = Order.INSERTION;
 
     /**
      * The comparator to use for ordering when {@link #order} is {@link Order#COMPARATOR}.
@@ -53,12 +53,41 @@ public class MapBuilder<K, V> {
     /**
      * The map used to store the entries as they are added. Maintains insertion order.
      */
-    private final Map<K, V> entries = new LinkedHashMap<>();
+    private Map<K, V> entries;
 
     /**
      * Constructs a new MapBuilder instance.
      */
     public MapBuilder() { }
+
+    /**
+     * Initializes the internal map.
+     */
+    private void ensureInternalMapInitialized() {
+        if (entries == null) {
+            entries = order == Order.INSERTION ? new LinkedHashMap<>() : new HashMap<>();
+        }
+    }
+
+    /**
+     * Ensures that the specified order is applied to the map to be built.
+     * <p>
+     * If this method is called <em>before</em> any element is added, then the creation of the internal map may be
+     * influenced by this order. For example, a call to {@code ensureOrder(Order.NONE)} may cause the internal map to be
+     * a HashMap. Adding entries and then calling {@link #insertionOrder()} may cause an IllegalStateException to be
+     * thrown.
+     *
+     * @param order The order of the map to be built.
+     */
+    private void ensureOrder(Order order) {
+        if (this.order != order) {
+            if (order == Order.INSERTION && entries != null) {
+                // If map 'entries' is non-null, it also contains elements, because it is lazily initialized.
+                throw new IllegalStateException("The insertion order is already discarded, it cannot be recovered");
+            }
+            this.order = order;
+        }
+    }
 
     /**
      * Adds a key-value pair to the map being built. If the key already exists, the value is overwritten.
@@ -68,17 +97,32 @@ public class MapBuilder<K, V> {
      * @return This {@code MapBuilder} instance for method chaining.
      */
     public MapBuilder<K, V> put(K key, V value) {
+        ensureInternalMapInitialized();
         entries.put(key, value);
         return this;
     }
 
     /**
-     * Specifies that the built map should maintain the order in which entries were inserted.
+     * Specifies that the built map does not have an iteration order.
      *
      * @return This {@code MapBuilder} instance for method chaining.
      */
+    public MapBuilder<K, V> unordered() {
+        ensureOrder(Order.NONE);
+        return this;
+    }
+
+    /**
+     * Specifies that the built map should maintain the order in which entries were inserted.
+     * <p>
+     * If elements were added when the sorting order was not {@code INSERTION}, the insertion order is said to be
+     * discarded. In such case, any call to this method will result in an {@code IllegalStateException} to be thrown.
+     *
+     * @return This {@code MapBuilder} instance for method chaining.
+     * @throws IllegalStateException If the insertion order was discarded earlier and then this method was called.
+     */
     public MapBuilder<K, V> insertionOrder() {
-        order = Order.INSERTION;
+        ensureOrder(Order.INSERTION);
         return this;
     }
 
@@ -89,7 +133,7 @@ public class MapBuilder<K, V> {
      * @return This {@code MapBuilder} instance for method chaining.
      */
     public MapBuilder<K, V> sortedOrder(Comparator<K> comparator) {
-        this.order = Order.COMPARATOR;
+        ensureOrder(Order.COMPARATOR);
         this.comparator = comparator;
         return this;
     }
@@ -103,7 +147,7 @@ public class MapBuilder<K, V> {
      * @throws ClassCastException If the keys do not implement the {@code Comparable} interface.
      */
     public MapBuilder<K, V> naturalOrder() {
-        order = Order.NATURAL;
+        ensureOrder(Order.NATURAL);
         return this;
     }
 
