@@ -36,7 +36,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
     /**
      * Whether this builder should produce an unmodifiable Map instance.
      */
-    private boolean unmodifiable;
+    private boolean unmodifiable = true;
 
     /**
      * Constructs a new MapBuilder instance.
@@ -792,12 +792,12 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
     }
 
     /**
-     * Specifies that the map to be built is unmodifiable.
+     * Specifies that the map to be built is mutable.
      *
      * @return This instance, to allow for method chaining.
      */
-    public MapBuilder<K, V, M> unmodifiable() {
-        unmodifiable = true;
+    public MapBuilder<K, V, M> mutable() {
+        unmodifiable = false;
         return this;
     }
 

@@ -35,7 +35,7 @@ public class SetBuilder<V, S extends Set<V>> {
     /**
      * Whether this builder should produce an unmodifiable Set instance.
      */
-    private boolean unmodifiable;
+    private boolean unmodifiable = true;
 
     /**
      * Constructs a new SetBuilder instance.
@@ -152,12 +152,12 @@ public class SetBuilder<V, S extends Set<V>> {
     }
 
     /**
-     * Specifies that the set to be built is unmodifiable.
+     * Specifies that the set to be built is mutable.
      *
      * @return This instance, to allow for method chaining.
      */
-    public SetBuilder<V, S> unmodifiable() {
-        unmodifiable = true;
+    public SetBuilder<V, S> mutable() {
+        unmodifiable = false;
         return this;
     }
 
