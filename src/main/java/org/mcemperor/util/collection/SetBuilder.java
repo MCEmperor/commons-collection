@@ -129,7 +129,7 @@ public class SetBuilder<V, S extends Set<V>> {
     }
 
     /**
-     * Adds an additional values to the builder.
+     * Adds an additional value to the builder.
      *
      * @param value The value to add.
      * @return This instance, to allow for method chaining.
