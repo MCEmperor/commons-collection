@@ -816,30 +816,67 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      *
      * @return The constructed map of type {@code M}.
      */
-    @SuppressWarnings("unchecked")
     public M build() {
         if (comparator != null) {
-            Map<K, V> resultingMap = new TreeMap<>(comparator);
-            resultingMap.putAll(internalMap);
-            return (M) determineUnmodifiable(resultingMap);
+            return buildSortedMap();
         }
         else if (ordered) {
-            return (M) determineUnmodifiable(new LinkedHashMap<>(internalMap));
+            return buildSequencedMap();
         }
         else {
-            return (M) determineUnmodifiable(new HashMap<>(internalMap));
+            return buildMap();
         }
     }
 
     /**
-     * Determines if an unmodifiable map is configured to be produced, and if so, wraps the provided map into an
-     * unmodifiable view of the map.
+     * Builds and returns a {@link SortedMap} containing the entries added to this builder.
+     * <p>
+     * If the builder is configured to return an <em>unmodifiable</em> instance, the resulting map is wrapped into an
+     * unmodifiable view of the resulting SortedMap.
      *
-     * @param map The created map to possibly wrap.
-     * @return An unmodifiable view of the given map if this builder is configured to produce an unmodifiable map,
-     * otherwise the given map without processing it.
+     * @return A SortedMap containing entries added to this builder.
      */
-    private Map<K, V> determineUnmodifiable(Map<K, V> map) {
-        return unmodifiable ? Collections.unmodifiableMap(map) : map;
+    @SuppressWarnings("unchecked")
+    private M buildSortedMap() {
+        SortedMap<K, V> resultingMap = new TreeMap<>(comparator);
+        resultingMap.putAll(internalMap);
+        if (unmodifiable) {
+            return (M) Collections.unmodifiableSortedMap(resultingMap);
+        }
+        return (M) resultingMap;
+    }
+
+    /**
+     * Builds and returns a {@link SequencedMap} containing the entries added to this builder.
+     * <p>
+     * If the builder is configured to return an <em>unmodifiable</em> instance, the resulting map is wrapped into an
+     * unmodifiable view of the resulting SequencedMap.
+     *
+     * @return A SequencedMap containing entries added to this builder.
+     */
+    @SuppressWarnings("unchecked")
+    private M buildSequencedMap() {
+        SequencedMap<K, V> resultingMap = new LinkedHashMap<>(internalMap);
+        if (unmodifiable) {
+            return (M) Collections.unmodifiableSequencedMap(resultingMap);
+        }
+        return (M) resultingMap;
+    }
+
+    /**
+     * Builds and returns a {@link Map} containing the entries added to this builder.
+     * <p>
+     * If the builder is configured to return an <em>unmodifiable</em> instance, the resulting map is wrapped into an
+     * unmodifiable view of the resulting Map.
+     *
+     * @return A Map containing entries added to this builder.
+     */
+    @SuppressWarnings("unchecked")
+    private M buildMap() {
+        Map<K, V> resultingMap = new HashMap<>(internalMap);
+        if (unmodifiable) {
+            return (M) Collections.unmodifiableMap(resultingMap);
+        }
+        return (M) resultingMap;
     }
 }
