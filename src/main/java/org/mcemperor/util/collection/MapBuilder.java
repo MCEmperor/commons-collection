@@ -389,7 +389,9 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
     }
 
     /**
-     * Constructs a new MapBuilder, with the sorting order and all entries of the specified map.
+     * Constructs a new MapBuilder, with the sorting order and all entries of the specified map. If the provided map
+     * sorts its keys using their <em>natural order</em>, then elements of the given map must implement the {@link
+     * Comparable} interface.
      * <p>
      * As this builder has a defined sorting, the map produced by this builder is a {@link SortedMap}.
      *
@@ -399,12 +401,29 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <V> The type of values within the map.
      * @param <M> The type of map this builder produces.
      */
-    public static <K, V, M extends SortedMap<K, V>> MapBuilder<K, V, M> of(SortedMap<K, ? extends V> map) {
+    public static <K, V, M extends SortedMap<K, V>> MapBuilder<K, V, M> ofMap(SortedMap<K, ? extends V> map) {
+        @SuppressWarnings("unchecked")
+        Comparator<? super K> comparator = map.comparator() != null
+            ? map.comparator()
+            : (Comparator<K>) Comparator.naturalOrder();
         return MapBuilder.<K, V, M>newUnorderedBuilder()
-            .<M>sorted(map.comparator())
+            .<M>sorted(comparator)
             .putAll(map);
     }
 
+    /**
+     * Constructs a new unordered MapBuilder, initially with the given map entries.
+     * <p>
+     * The MapBuilder has no specified encounter order, and any map this builder produces does not provide any
+     * guarantees regarding encounter order.
+     *
+     * @param first The first entry to add to the map.
+     * @param more More entries to add to the map.
+     * @return A new MapBuilder instance with the given map entries.
+     * @param <K> The type of keys within the map.
+     * @param <V> The type of values within the map.
+     * @param <M> The type of map this builder produces.
+     */
     @SafeVarargs
     public static <K, V, M extends Map<K, V>> MapBuilder<K, V, M> ofEntries(Map.Entry<K, V> first, Map.Entry<K, V>... more) {
         return MapBuilder.<K, V, M>newUnorderedBuilder()
@@ -725,17 +744,17 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
     }
 
     /**
-     * Constructs a new ordered MapBuilder, initially with the given keys and values.
+     * Constructs a new ordered MapBuilder, initially with the given map entries.
      * <p>
      * The MapBuilder maintains encounter order, which is the order in which key-value pairs are added. As this builder
      * is ordered, the map produced by this builder is a {@link SequencedMap}.
      *
-     * @param first The first map entry.
-     * @param more More map entries.
+     * @param first The first map entry to add to the builder.
+     * @param more More map entries to add to the builder, in order.
      * @return A new MapBuilder instance with the given keys and values.
      */
     @SafeVarargs
-    public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrdered(Map.Entry<K, V> first, Map.Entry<K, V>... more) {
+    public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrderedEntries(Map.Entry<K, V> first, Map.Entry<K, V>... more) {
         return MapBuilder.<K, V, M>newInsertionOrderBuilder()
             .putEntries(first, more);
     }

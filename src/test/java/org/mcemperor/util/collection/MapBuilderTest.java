@@ -12,11 +12,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.SequencedMap;
 import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.entry;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
@@ -102,12 +105,53 @@ class MapBuilderTest {
     }
 
     @Test
-    void buildMethodWithUnmodifiableReturnsUnmodifiableMap() {
+    void ofEntriesMethodReturnsNormalMap() {
+        var result = MapBuilder.ofEntries(
+            Map.entry("one", "alpha"),
+            Map.entry("two", "bravo"),
+            Map.entry("three", "charlie"),
+            Map.entry("four", "delta"),
+            Map.entry("five", "echo")
+        ).build();
+
+        assertThat(result)
+            .containsOnly(
+                entry("five", "echo"),
+                entry("four", "delta"),
+                entry("three", "charlie"),
+                entry("two", "bravo"),
+                entry("one", "alpha")
+            );
+    }
+
+    @Test
+    void ofOrderedEntriesMethodReturnsMapWithSpecifiedOrder() {
+        Map<String, String> result = MapBuilder.ofOrderedEntries(
+            Map.entry("one", "alpha"),
+            Map.entry("two", "bravo"),
+            Map.entry("three", "charlie"),
+            Map.entry("four", "delta"),
+            Map.entry("five", "echo")
+        ).build();
+
+        assertThat(result)
+            .isInstanceOf(SequencedMap.class)
+            .containsExactly(
+                entry("one", "alpha"),
+                entry("two", "bravo"),
+                entry("three", "charlie"),
+                entry("four", "delta"),
+                entry("five", "echo")
+            );
+    }
+
+    @Test
+    void buildMethodWithoutMutableReturnsUnmodifiableMap() {
         Map<String, Integer> map = MapBuilder.of(
-            "one", 1,
-            "two", 2,
-            "three", 3,
-            "four", 4)
+                "one", 1,
+                "two", 2,
+                "three", 3,
+                "four", 4)
             .build();
 
         assertThat(map)
@@ -121,29 +165,119 @@ class MapBuilderTest {
     }
 
     @Test
+    void buildMethodWithMutableReturnsMutableMap() {
+        Map<String, Integer> map = MapBuilder.of(
+                "one", 1,
+                "two", 2,
+                "three", 3,
+                "four", 4)
+            .mutable()
+            .build();
+
+        assertThatNoException()
+            .isThrownBy(() -> map.put("five", 5));
+    }
+
+    @Test
     void buildMethodReturnsSequencedMapIfOrdered() {
         Map<Integer, String> map = MapBuilder.ofOrdered(1, "alpha", 2, "bravo")
             .build();
 
+        assertThat(map)
+            .isInstanceOf(SequencedMap.class)
+            .isUnmodifiable();
+    }
+
+    @Test
+    void buildMethodReturnsMutableSequencedMapIfOrderedAndMutable() {
+        Map<Integer, String> map = MapBuilder.ofOrdered(1, "alpha", 2, "bravo")
+            .mutable()
+            .build();
+
         assertThat(map).isInstanceOf(SequencedMap.class);
+        assertThatNoException().isThrownBy(() -> map.put(3, "charlie"));
     }
 
     @Test
     void buildMethodReturnsSortedMapIfSorted() {
         Map<String, Integer> map = MapBuilder.of(
-            "one", 1,
-            "two", 2,
-            "three", 3,
-            "four", 4)
+                "one", 1,
+                "two", 2,
+                "three", 3,
+                "four", 4)
             .sorted(Comparator.naturalOrder())
             .build();
 
         assertThat(map)
             .isInstanceOf(SortedMap.class)
+            .isUnmodifiable()
             .containsExactly(
                 entry("four", 4),
                 entry("one", 1),
                 entry("three", 3),
                 entry("two", 2));
+    }
+
+    @Test
+    void buildMethodReturnsMutableSortedMapIfSortedAndMutable() {
+        Map<String, Integer> map = MapBuilder.of(
+                "one", 1,
+                "two", 2,
+                "three", 3,
+                "four", 4)
+            .sorted(Comparator.naturalOrder())
+            .mutable()
+            .build();
+
+        assertThatNoException().isThrownBy(() -> map.put("five", 5));
+        assertThat(map)
+            .isInstanceOf(SortedMap.class)
+            .containsExactly(
+                entry("five", 5),
+                entry("four", 4),
+                entry("one", 1),
+                entry("three", 3),
+                entry("two", 2));
+    }
+
+    static Stream<Comparator<?>> ofMapMethodWithSortedMapReturnsSortedMapInstance() {
+        return Stream.of(
+            Comparator.naturalOrder(),
+            null
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    void ofMapMethodWithSortedMapReturnsSortedMapInstance(Comparator<String> comparator) {
+        SortedMap<String, Integer> sortedMap = new TreeMap<>(comparator);
+        sortedMap.put("one", 1);
+        sortedMap.put("two", 2);
+        sortedMap.put("three", 3);
+
+        Map<String, Integer> result = MapBuilder.ofMap(sortedMap)
+            .put("four", 4)
+            .put("five", 5)
+            .build();
+
+        assertThat(result)
+            .isInstanceOf(SortedMap.class)
+            .containsExactly(
+                entry("five", 5),
+                entry("four", 4),
+                entry("one", 1),
+                entry("three", 3),
+                entry("two", 2)
+            );
+    }
+
+    @Test
+    void ofMapMethodWithSortedMapWithNullComparatorAndNonComparablesThrows() {
+        class SomethingNonComparable { }
+
+        assertThatExceptionOfType(ClassCastException.class)
+            .isThrownBy(() -> MapBuilder.ofMap(new TreeMap<>())
+                .put(new SomethingNonComparable(), 1)
+                .build());
     }
 }
