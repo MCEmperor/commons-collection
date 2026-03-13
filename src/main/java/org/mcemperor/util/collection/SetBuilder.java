@@ -87,6 +87,240 @@ public class SetBuilder<V, S extends Set<V>> {
     }
 
     /**
+     * Constructs a new unordered SetBuilder initially with the given values.
+     * <p>
+     * The SetBuilder has no specified encounter order, and any set this builder produces does not provide any
+     * guarantees regarding encounter order.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends Set<V>> SetBuilder<V, S> of(V v1, V v2) {
+        return SetBuilder.<V, S>newUnorderedBuilder()
+            .add(v1)
+            .add(v2);
+    }
+
+    /**
+     * Constructs a new unordered SetBuilder initially with the given values.
+     * <p>
+     * The SetBuilder has no specified encounter order, and any set this builder produces does not provide any
+     * guarantees regarding encounter order.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends Set<V>> SetBuilder<V, S> of(V v1, V v2, V v3) {
+        return SetBuilder.<V, S>newUnorderedBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3);
+    }
+
+    /**
+     * Constructs a new unordered SetBuilder initially with the given values.
+     * <p>
+     * The SetBuilder has no specified encounter order, and any set this builder produces does not provide any
+     * guarantees regarding encounter order.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends Set<V>> SetBuilder<V, S> of(V v1, V v2, V v3, V v4) {
+        return SetBuilder.<V, S>newUnorderedBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4);
+    }
+
+    /**
+     * Constructs a new unordered SetBuilder initially with the given values.
+     * <p>
+     * The SetBuilder has no specified encounter order, and any set this builder produces does not provide any
+     * guarantees regarding encounter order.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends Set<V>> SetBuilder<V, S> of(V v1, V v2, V v3, V v4, V v5) {
+        return SetBuilder.<V, S>newUnorderedBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5);
+    }
+
+    /**
+     * Constructs a new unordered SetBuilder initially with the given values.
+     * <p>
+     * The SetBuilder has no specified encounter order, and any set this builder produces does not provide any
+     * guarantees regarding encounter order.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @param v6 The sixth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends Set<V>> SetBuilder<V, S> of(V v1, V v2, V v3, V v4, V v5, V v6) {
+        return SetBuilder.<V, S>newUnorderedBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5)
+            .add(v6);
+    }
+
+    /**
+     * Constructs a new unordered SetBuilder initially with the given values.
+     * <p>
+     * The SetBuilder has no specified encounter order, and any set this builder produces does not provide any
+     * guarantees regarding encounter order.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @param v6 The sixth value.
+     * @param v7 The seventh value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends Set<V>> SetBuilder<V, S> of(V v1, V v2, V v3, V v4, V v5, V v6, V v7) {
+        return SetBuilder.<V, S>newUnorderedBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5)
+            .add(v6)
+            .add(v7);
+    }
+
+    /**
+     * Constructs a new unordered SetBuilder initially with the given values.
+     * <p>
+     * The SetBuilder has no specified encounter order, and any set this builder produces does not provide any
+     * guarantees regarding encounter order.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @param v6 The sixth value.
+     * @param v7 The seventh value.
+     * @param v8 The eighth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends Set<V>> SetBuilder<V, S> of(V v1, V v2, V v3, V v4, V v5, V v6, V v7, V v8) {
+        return SetBuilder.<V, S>newUnorderedBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5)
+            .add(v6)
+            .add(v7)
+            .add(v8);
+    }
+
+    /**
+     * Constructs a new unordered SetBuilder initially with the given values.
+     * <p>
+     * The SetBuilder has no specified encounter order, and any set this builder produces does not provide any
+     * guarantees regarding encounter order.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @param v6 The sixth value.
+     * @param v7 The seventh value.
+     * @param v8 The eighth value.
+     * @param v9 The ninth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends Set<V>> SetBuilder<V, S> of(V v1, V v2, V v3, V v4, V v5, V v6, V v7, V v8, V v9) {
+        return SetBuilder.<V, S>newUnorderedBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5)
+            .add(v6)
+            .add(v7)
+            .add(v8)
+            .add(v9);
+    }
+
+    /**
+     * Constructs a new unordered SetBuilder initially with the given values.
+     * <p>
+     * The SetBuilder has no specified encounter order, and any set this builder produces does not provide any
+     * guarantees regarding encounter order.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @param v6 The sixth value.
+     * @param v7 The seventh value.
+     * @param v8 The eighth value.
+     * @param v9 The ninth value.
+     * @param v10 The tenth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends Set<V>> SetBuilder<V, S> of(V v1, V v2, V v3, V v4, V v5, V v6, V v7, V v8, V v9, V v10) {
+        return SetBuilder.<V, S>newUnorderedBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5)
+            .add(v6)
+            .add(v7)
+            .add(v8)
+            .add(v9)
+            .add(v10);
+    }
+
+    /**
      * Constructs a new SetBuilder, with the sorting order and all values of the specified set.
      * <p>
      * As this builder has a defined sorting, the set produced by this builder is a {@link SortedSet}.
@@ -96,9 +330,13 @@ public class SetBuilder<V, S extends Set<V>> {
      * @param <V> The type of values within the set.
      * @param <S> The type of set this builder produces.
      */
-    public static <V, S extends SortedSet<V>> SetBuilder<V, S> of(SortedSet<V> set) {
+    public static <V, S extends SortedSet<V>> SetBuilder<V, S> ofSet(SortedSet<V> set) {
+        @SuppressWarnings("unchecked")
+        Comparator<? super V> comparator = set.comparator() != null
+            ? set.comparator()
+            : (Comparator<V>) Comparator.naturalOrder();
         return SetBuilder.<V, S>newUnorderedBuilder()
-            .<S>sorted(set.comparator())
+            .<S>sorted(comparator)
             .addAll(set);
     }
 
@@ -108,6 +346,7 @@ public class SetBuilder<V, S extends Set<V>> {
      * The SetBuilder maintains encounter order, which is the order in which values are added. As this builder is
      * ordered, the set produced by this builder is a {@link SequencedSet}.
      *
+     * @param value The value.
      * @return A new SetBuilder instance with the given values.
      * @param <V> The type of values within the set.
      * @param <S> The type of set this builder produces.
@@ -115,6 +354,240 @@ public class SetBuilder<V, S extends Set<V>> {
     public static <V, S extends SequencedSet<V>> SetBuilder<V, S> ofOrdered(V value) {
         return SetBuilder.<V, S>newInsertionOrderBuilder()
             .add(value);
+    }
+
+    /**
+     * Constructs a new ordered SetBuilder, initially with the given values.
+     * <p>
+     * The SetBuilder maintains encounter order, which is the order in which values are added. As this builder is
+     * ordered, the set produced by this builder is a {@link SequencedSet}.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends SequencedSet<V>> SetBuilder<V, S> ofOrdered(V v1, V v2) {
+        return SetBuilder.<V, S>newInsertionOrderBuilder()
+            .add(v1)
+            .add(v2);
+    }
+
+    /**
+     * Constructs a new ordered SetBuilder, initially with the given values.
+     * <p>
+     * The SetBuilder maintains encounter order, which is the order in which values are added. As this builder is
+     * ordered, the set produced by this builder is a {@link SequencedSet}.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends SequencedSet<V>> SetBuilder<V, S> ofOrdered(V v1, V v2, V v3) {
+        return SetBuilder.<V, S>newInsertionOrderBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3);
+    }
+
+    /**
+     * Constructs a new ordered SetBuilder, initially with the given values.
+     * <p>
+     * The SetBuilder maintains encounter order, which is the order in which values are added. As this builder is
+     * ordered, the set produced by this builder is a {@link SequencedSet}.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends SequencedSet<V>> SetBuilder<V, S> ofOrdered(V v1, V v2, V v3, V v4) {
+        return SetBuilder.<V, S>newInsertionOrderBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4);
+    }
+
+    /**
+     * Constructs a new ordered SetBuilder, initially with the given values.
+     * <p>
+     * The SetBuilder maintains encounter order, which is the order in which values are added. As this builder is
+     * ordered, the set produced by this builder is a {@link SequencedSet}.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends SequencedSet<V>> SetBuilder<V, S> ofOrdered(V v1, V v2, V v3, V v4, V v5) {
+        return SetBuilder.<V, S>newInsertionOrderBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5);
+    }
+
+    /**
+     * Constructs a new ordered SetBuilder, initially with the given values.
+     * <p>
+     * The SetBuilder maintains encounter order, which is the order in which values are added. As this builder is
+     * ordered, the set produced by this builder is a {@link SequencedSet}.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @param v6 The sixth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends SequencedSet<V>> SetBuilder<V, S> ofOrdered(V v1, V v2, V v3, V v4, V v5, V v6) {
+        return SetBuilder.<V, S>newInsertionOrderBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5)
+            .add(v6);
+    }
+
+    /**
+     * Constructs a new ordered SetBuilder, initially with the given values.
+     * <p>
+     * The SetBuilder maintains encounter order, which is the order in which values are added. As this builder is
+     * ordered, the set produced by this builder is a {@link SequencedSet}.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @param v6 The sixth value.
+     * @param v7 The seventh value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends SequencedSet<V>> SetBuilder<V, S> ofOrdered(V v1, V v2, V v3, V v4, V v5, V v6, V v7) {
+        return SetBuilder.<V, S>newInsertionOrderBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5)
+            .add(v6)
+            .add(v7);
+    }
+
+    /**
+     * Constructs a new ordered SetBuilder, initially with the given values.
+     * <p>
+     * The SetBuilder maintains encounter order, which is the order in which values are added. As this builder is
+     * ordered, the set produced by this builder is a {@link SequencedSet}.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @param v6 The sixth value.
+     * @param v7 The seventh value.
+     * @param v8 The eighth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends SequencedSet<V>> SetBuilder<V, S> ofOrdered(V v1, V v2, V v3, V v4, V v5, V v6, V v7, V v8) {
+        return SetBuilder.<V, S>newInsertionOrderBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5)
+            .add(v6)
+            .add(v7)
+            .add(v8);
+    }
+
+    /**
+     * Constructs a new ordered SetBuilder, initially with the given values.
+     * <p>
+     * The SetBuilder maintains encounter order, which is the order in which values are added. As this builder is
+     * ordered, the set produced by this builder is a {@link SequencedSet}.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @param v6 The sixth value.
+     * @param v7 The seventh value.
+     * @param v8 The eighth value.
+     * @param v9 The ninth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends SequencedSet<V>> SetBuilder<V, S> ofOrdered(V v1, V v2, V v3, V v4, V v5, V v6, V v7, V v8, V v9) {
+        return SetBuilder.<V, S>newInsertionOrderBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5)
+            .add(v6)
+            .add(v7)
+            .add(v8)
+            .add(v9);
+    }
+
+    /**
+     * Constructs a new ordered SetBuilder, initially with the given values.
+     * <p>
+     * The SetBuilder maintains encounter order, which is the order in which values are added. As this builder is
+     * ordered, the set produced by this builder is a {@link SequencedSet}.
+     *
+     * @param v1 The first value.
+     * @param v2 The second value.
+     * @param v3 The third value.
+     * @param v4 The fourth value.
+     * @param v5 The fifth value.
+     * @param v6 The sixth value.
+     * @param v7 The seventh value.
+     * @param v8 The eighth value.
+     * @param v9 The ninth value.
+     * @param v10 The tenth value.
+     * @return A new SetBuilder instance with the given values.
+     * @param <V> The type of values within the set.
+     * @param <S> The type of set this builder produces.
+     */
+    public static <V, S extends SequencedSet<V>> SetBuilder<V, S> ofOrdered(V v1, V v2, V v3, V v4, V v5, V v6, V v7, V v8, V v9, V v10) {
+        return SetBuilder.<V, S>newInsertionOrderBuilder()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .add(v4)
+            .add(v5)
+            .add(v6)
+            .add(v7)
+            .add(v8)
+            .add(v9)
+            .add(v10);
     }
 
     /**
@@ -176,30 +649,67 @@ public class SetBuilder<V, S extends Set<V>> {
      *
      * @return The constructed set of type {@code S}.
      */
-    @SuppressWarnings("unchecked")
     public S build() {
         if (comparator != null) {
-            Set<V> resultingSet = new TreeSet<>(comparator);
-            resultingSet.addAll(internalSet);
-            return (S) determineUnmodifiable(resultingSet);
+            return buildSortedSet();
         }
         else if (ordered) {
-            return (S) determineUnmodifiable(new LinkedHashSet<>(internalSet));
+            return buildSequencedSet();
         }
         else {
-            return (S) determineUnmodifiable(new HashSet<>(internalSet));
+            return buildSet();
         }
     }
 
     /**
-     * Determines if an unmodifiable set is configured to be produced, and if so, wraps the provided set into an
-     * unmodifiable view of the set.
+     * Builds and returns a {@link SortedSet} containing the values added to this builder.
+     * <p>
+     * If the builder is configured to return an <em>unmodifiable</em> instance, the resulting set is wrapped into an
+     * unmodifiable view of the resulting SortedSet.
      *
-     * @param set The created set to possibly wrap.
-     * @return An unmodifiable view of the given set if this builder is configured to produce an unmodifiable set,
-     * otherwise the given set without processing it.
+     * @return A SortedSet containing values added to this builder.
      */
-    private Set<V> determineUnmodifiable(Set<V> set) {
-        return unmodifiable ? Collections.unmodifiableSet(set) : set;
+    @SuppressWarnings("unchecked")
+    private S buildSortedSet() {
+        SortedSet<V> resultingSet = new TreeSet<>(comparator);
+        resultingSet.addAll(internalSet);
+        if (unmodifiable) {
+            return (S) Collections.unmodifiableSortedSet(resultingSet);
+        }
+        return (S) resultingSet;
+    }
+
+    /**
+     * Builds and returns a {@link SequencedSet} containing the values added to this builder.
+     * <p>
+     * If the builder is configured to return an <em>unmodifiable</em> instance, the resulting set is wrapped into an
+     * unmodifiable view of the resulting SequencedSet.
+     *
+     * @return A SequencedSet containing values added to this builder.
+     */
+    @SuppressWarnings("unchecked")
+    private S buildSequencedSet() {
+        SequencedSet<V> resultingSet = new LinkedHashSet<>(internalSet);
+        if (unmodifiable) {
+            return (S) Collections.unmodifiableSequencedSet(resultingSet);
+        }
+        return (S) resultingSet;
+    }
+
+    /**
+     * Builds and returns a {@link Set} containing the values added to this builder.
+     * <p>
+     * If the builder is configured to return an <em>unmodifiable</em> instance, the resulting set is wrapped into an
+     * unmodifiable view of the resulting Set.
+     *
+     * @return A Set containing values added to this builder.
+     */
+    @SuppressWarnings("unchecked")
+    private S buildSet() {
+        Set<V> resultingSet = new HashSet<>(internalSet);
+        if (unmodifiable) {
+            return (S) Collections.unmodifiableSet(resultingSet);
+        }
+        return (S) resultingSet;
     }
 }
