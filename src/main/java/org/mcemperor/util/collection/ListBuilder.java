@@ -3,9 +3,6 @@ package org.mcemperor.util.collection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.SequencedSet;
-import java.util.Set;
-import java.util.SortedSet;
 
 /**
  * A builder class for creating {@link List}s.
@@ -266,18 +263,16 @@ public class ListBuilder<V, L extends List<V>> {
     }
 
     /**
-     * Constructs a new SetBuilder, with the sorting order and all values of the specified set.
-     * <p>
-     * As this builder has a defined sorting, the set produced by this builder is a {@link SortedSet}.
+     * Constructs a new ListBuilder, with all values of the specified list.
      *
-     * @param set The sorted set with the values to add.
-     * @return A new SetBuilder instance with the sorting and values of the given set.
+     * @param list The list with the values to add.
+     * @return A new ListBuilder instance with the values of the given list.
      * @param <V> The type of values within the list.
      * @param <L> The type of list this builder produces.
      */
-    public static <V, L extends List<V>> ListBuilder<V, L> of(SequencedSet<V> set) {
+    public static <V, L extends List<V>> ListBuilder<V, L> ofCollection(List<V> list) {
         return ListBuilder.<V, L>newBuilder()
-            .addAll(set);
+            .addAll(list);
     }
 
     /**
@@ -286,7 +281,7 @@ public class ListBuilder<V, L extends List<V>> {
      * @param list The list of which all values added to this builder.
      * @return This instance, to allow for method chaining.
      */
-    private ListBuilder<V, L> addAll(Set<? extends V> list) {
+    private ListBuilder<V, L> addAll(List<? extends V> list) {
         internalList.addAll(list);
         return this;
     }
@@ -303,12 +298,12 @@ public class ListBuilder<V, L extends List<V>> {
     }
 
     /**
-     * Specifies that the list to be built is unmodifiable.
+     * Specifies that the list to be built is mutable.
      *
      * @return This instance, to allow for method chaining.
      */
-    public ListBuilder<V, L> unmodifiable() {
-        unmodifiable = true;
+    public ListBuilder<V, L> mutable() {
+        unmodifiable = false;
         return this;
     }
 
@@ -320,20 +315,24 @@ public class ListBuilder<V, L extends List<V>> {
      *
      * @return The constructed list of type {@code L}.
      */
-    @SuppressWarnings("unchecked")
     public L build() {
-        return (L) determineUnmodifiable(new ArrayList<>(internalList));
+        return buildList();
     }
 
     /**
-     * Determines if an unmodifiable list is configured to be produced, and if so, wraps the provided list into an
-     * unmodifiable view of the list.
+     * Builds and returns a {@link List} containing the values added to this builder.
+     * <p>
+     * If the builder is configured to return an <em>unmodifiable</em> instance, the resulting list is wrapped into an
+     * unmodifiable view of the resulting List.
      *
-     * @param list The created list to possibly wrap.
-     * @return An unmodifiable view of the given list if this builder is configured to produce an unmodifiable list,
-     * otherwise the given list without processing it.
+     * @return A List containing values added to this builder.
      */
-    private List<V> determineUnmodifiable(List<V> list) {
-        return unmodifiable ? Collections.unmodifiableList(list) : list;
+    @SuppressWarnings("unchecked")
+    private L buildList() {
+        List<V> resultingList = new ArrayList<>(internalList);
+        if (unmodifiable) {
+            return (L) Collections.unmodifiableList(resultingList);
+        }
+        return (L) resultingList;
     }
 }
