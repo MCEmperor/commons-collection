@@ -330,7 +330,7 @@ public class SetBuilder<V, S extends Set<V>> {
      * @param <V> The type of values within the set.
      * @param <S> The type of set this builder produces.
      */
-    public static <V, S extends SortedSet<V>> SetBuilder<V, S> ofSet(SortedSet<V> set) {
+    public static <V, S extends SortedSet<V>> SetBuilder<V, S> ofCollection(SortedSet<V> set) {
         @SuppressWarnings("unchecked")
         Comparator<? super V> comparator = set.comparator() != null
             ? set.comparator()

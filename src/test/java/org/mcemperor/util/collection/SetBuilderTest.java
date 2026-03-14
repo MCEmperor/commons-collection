@@ -159,7 +159,7 @@ class SetBuilderTest {
             .containsExactly(E, D, A, C, B); // Lexical order
     }
 
-    static Stream<Comparator<?>> ofSetMethodWithSortedSetReturnsSortedSetInstance() {
+    static Stream<Comparator<?>> ofCollectionMethodWithSortedSetReturnsSortedSetInstance() {
         return Stream.of(
             Comparator.naturalOrder(),
             null
@@ -168,13 +168,13 @@ class SetBuilderTest {
 
     @ParameterizedTest
     @MethodSource
-    void ofSetMethodWithSortedSetReturnsSortedSetInstance(Comparator<String> comparator) {
+    void ofCollectionMethodWithSortedSetReturnsSortedSetInstance(Comparator<String> comparator) {
         SortedSet<String> sortedSet = new TreeSet<>(comparator);
         sortedSet.add(A);
         sortedSet.add(B);
         sortedSet.add(C);
 
-        Set<String> result = SetBuilder.ofSet(sortedSet)
+        Set<String> result = SetBuilder.ofCollection(sortedSet)
             .add(D)
             .add(E)
             .build();
@@ -185,11 +185,11 @@ class SetBuilderTest {
     }
 
     @Test
-    void ofSetMethodWithSortedSetWithNullComparatorAndNonComparablesThrows() {
+    void ofCollectionMethodWithSortedSetWithNullComparatorAndNonComparablesThrows() {
         class SomethingNonComparable { }
 
         assertThatExceptionOfType(ClassCastException.class)
-            .isThrownBy(() -> SetBuilder.ofSet(new TreeSet<>())
+            .isThrownBy(() -> SetBuilder.ofCollection(new TreeSet<>())
                 .add(new SomethingNonComparable())
                 .build());
     }
