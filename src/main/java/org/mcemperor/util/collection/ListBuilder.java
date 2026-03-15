@@ -1,6 +1,7 @@
 package org.mcemperor.util.collection;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -263,26 +264,28 @@ public class ListBuilder<V, L extends List<V>> {
     }
 
     /**
-     * Constructs a new ListBuilder, with all values of the specified list.
+     * Constructs a new ListBuilder with all values of the specified collection, in the order of the collection's
+     * iterator.
      *
-     * @param list The list with the values to add.
-     * @return A new ListBuilder instance with the values of the given list.
-     * @param <V> The type of values within the list.
+     * @param collection The collection with the values to add.
+     * @return A new ListBuilder instance with the values of the given collection.
+     * @param <V> The type of values within the list builder.
      * @param <L> The type of list this builder produces.
      */
-    public static <V, L extends List<V>> ListBuilder<V, L> ofCollection(List<V> list) {
+    public static <V, L extends List<V>> ListBuilder<V, L> ofCollection(Collection<V> collection) {
         return ListBuilder.<V, L>newBuilder()
-            .addAll(list);
+            .addAll(collection);
     }
 
     /**
-     * Adds all values of the specified list into this list.
+     * Adds all values of the specified collection into this list builder. The elements are added in the same order as
+     * collection's iterator.
      *
-     * @param list The list of which all values added to this builder.
+     * @param collection The collection of which all values added to this builder.
      * @return This instance, to allow for method chaining.
      */
-    private ListBuilder<V, L> addAll(List<? extends V> list) {
-        internalList.addAll(list);
+    private ListBuilder<V, L> addAll(Collection<? extends V> collection) {
+        internalList.addAll(collection);
         return this;
     }
 
