@@ -107,8 +107,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends Map<K, V>> MapBuilder<K, V, M> of(K k1, V v1, K k2, V v2) {
-        return MapBuilder.<K, V, M>newUnorderedBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>of(k1, v1)
             .put(k2, v2);
     }
 
@@ -130,8 +129,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends Map<K, V>> MapBuilder<K, V, M> of(K k1, V v1, K k2, V v2, K k3, V v3) {
-        return MapBuilder.<K, V, M>newUnorderedBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>of(k1, v1)
             .put(k2, v2)
             .put(k3, v3);
     }
@@ -156,8 +154,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends Map<K, V>> MapBuilder<K, V, M> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4) {
-        return MapBuilder.<K, V, M>newUnorderedBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>of(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4);
@@ -185,8 +182,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends Map<K, V>> MapBuilder<K, V, M> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5) {
-        return MapBuilder.<K, V, M>newUnorderedBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>of(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -217,8 +213,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends Map<K, V>> MapBuilder<K, V, M> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6) {
-        return MapBuilder.<K, V, M>newUnorderedBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>of(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -252,8 +247,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends Map<K, V>> MapBuilder<K, V, M> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6, K k7, V v7) {
-        return MapBuilder.<K, V, M>newUnorderedBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>of(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -290,8 +284,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends Map<K, V>> MapBuilder<K, V, M> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6, K k7, V v7, K k8, V v8) {
-        return MapBuilder.<K, V, M>newUnorderedBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>of(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -331,8 +324,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends Map<K, V>> MapBuilder<K, V, M> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6, K k7, V v7, K k8, V v8, K k9, V v9) {
-        return MapBuilder.<K, V, M>newUnorderedBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>of(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -375,8 +367,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends Map<K, V>> MapBuilder<K, V, M> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6, K k7, V v7, K k8, V v8, K k9, V v9, K k10, V v10) {
-        return MapBuilder.<K, V, M>newUnorderedBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>of(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -462,8 +453,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrdered(K k1, V v1, K k2, V v2) {
-        return MapBuilder.<K, V, M>newInsertionOrderBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>ofOrdered(k1, v1)
             .put(k2, v2);
     }
 
@@ -485,8 +475,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrdered(K k1, V v1, K k2, V v2, K k3, V v3) {
-        return MapBuilder.<K, V, M>newInsertionOrderBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>ofOrdered(k1, v1)
             .put(k2, v2)
             .put(k3, v3);
     }
@@ -511,8 +500,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrdered(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4) {
-        return MapBuilder.<K, V, M>newInsertionOrderBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>ofOrdered(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4);
@@ -540,8 +528,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrdered(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5) {
-        return MapBuilder.<K, V, M>newInsertionOrderBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>ofOrdered(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -572,8 +559,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrdered(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6) {
-        return MapBuilder.<K, V, M>newInsertionOrderBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>ofOrdered(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -607,8 +593,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrdered(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6, K k7, V v7) {
-        return MapBuilder.<K, V, M>newInsertionOrderBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>ofOrdered(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -645,8 +630,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrdered(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6, K k7, V v7, K k8, V v8) {
-        return MapBuilder.<K, V, M>newInsertionOrderBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>ofOrdered(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -686,8 +670,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrdered(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6, K k7, V v7, K k8, V v8, K k9, V v9) {
-        return MapBuilder.<K, V, M>newInsertionOrderBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>ofOrdered(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
@@ -730,8 +713,7 @@ public class MapBuilder<K, V, M extends Map<K, V>> {
      * @param <M> The type of map this builder produces.
      */
     public static <K, V, M extends SequencedMap<K, V>> MapBuilder<K, V, M> ofOrdered(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6, K k7, V v7, K k8, V v8, K k9, V v9, K k10, V v10) {
-        return MapBuilder.<K, V, M>newInsertionOrderBuilder()
-            .put(k1, v1)
+        return MapBuilder.<K, V, M>ofOrdered(k1, v1)
             .put(k2, v2)
             .put(k3, v3)
             .put(k4, v4)
