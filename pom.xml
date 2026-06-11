@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>Commons Collection</name>
+    <name>Collection Utils</name>
     <groupId>org.mcemperor.util</groupId>
-    <artifactId>commons-collection</artifactId>
+    <artifactId>collection-utils</artifactId>
     <version>0.2.0</version>
     <url>https://github.com/${repository.id}</url>
     <description>Utilities for collections.</description>
@@ -29,7 +29,7 @@
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <repository.id>MCEmperor/commons-collection</repository.id>
+        <repository.id>MCEmperor/collection-utils</repository.id>
         <repository.url>https://github.com/${repository.id}.git</repository.url>
         <nexus.url>https://central.sonatype.com</nexus.url>
     </properties>
