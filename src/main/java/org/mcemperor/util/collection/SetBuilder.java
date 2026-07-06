@@ -617,6 +617,7 @@ public class SetBuilder<V, S extends Set<V>> {
      *
      * @param comparator The comparator to use for sorting.
      * @return This instance, to allow for method chaining.
+     * @param <T> The type of Set returned by this method.
      */
     @SuppressWarnings("unchecked")
     public <T extends SortedSet<V>> SetBuilder<V, T> sorted(Comparator<? super V> comparator) {
